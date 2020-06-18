@@ -1,0 +1,71 @@
+﻿@model FullResponseType
+
+@{
+    ViewData["Title"] = "index";
+}
+
+<h2>Episodes</h2>
+<table class="table table-hover" id="episodes-table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Episode</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var episode in Model.episodes.results)
+            {
+                <tr>
+                    <th scope="row">@episode.id</th>
+                    <td>@episode.name</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<h2>Characters</h2>
+<table class="table table-hover" id="episodes-table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Character</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var character in Model.characters.results)
+            {
+                <tr>
+                    <th scope="row">@character.id</th>
+                    <td>@character.name</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>
+
+<h2>Locations</h2>
+<table class="table table-hover" id="episodes-table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Character</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var location in Model.locations.results)
+            {
+                <tr>
+                    <th scope="row">@location.id</th>
+                    <td>@location.name</td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

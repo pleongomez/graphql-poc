@@ -1,0 +1,44 @@
+﻿@model CharacterResultType
+
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h3>@Model.name</h3>
+
+<div class="form-group">
+    <label>Species</label>
+    <input asp-for="species" class="form-control" />
+</div>
+<div class="form-group">
+    <label>Status</label>
+    <input asp-for="status" class="form-control" />
+</div>
+<div class="form-group">
+    <label>Location</label>
+    <input asp-for="location.name" class="form-control" />
+</div>
+
+
+<h4>Episodes</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Episode</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @{
+            foreach (var episode in Model.episode)
+            {
+                <tr>
+                    <th scope="row">@episode.id</th>
+                    <td>@episode.name</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
