@@ -9,7 +9,6 @@ using graphql.poc.repository;
 using graphql.poc.repository.Repository;
 using graphql.poc.schema;
 using graphql.poc.schema.Types;
-using graphql.poc.server.Helper;
 using graphql.poc.server.middleware;
 using graphql.poc.services.Services;
 using GraphQL;
@@ -80,7 +79,6 @@ namespace graphql.poc.server
             {
                 app.UseHsts();
             }
-
 
             app.UseMigrationDatabase<NbaContext>();
             app.UseGraphQLMiddleware<NbaSchema>();

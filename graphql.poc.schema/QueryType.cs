@@ -22,11 +22,6 @@ namespace graphql.poc.schema
 
             Name = "Query";
             
-            Field<NonNullGraphType<StringGraphType>>(
-                name: "message",
-                resolve: context => "ola ke ase"
-            );
-
             Field<ListGraphType<PlayerType>>(
                 name: "players",
                 resolve: context => _playerService.Get()

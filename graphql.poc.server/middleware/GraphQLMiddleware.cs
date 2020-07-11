@@ -28,7 +28,6 @@ namespace graphql.poc.server.middleware
             get => _variables ?? new JObject(new JObject { });
             set => _variables = value;
         }
-
     }
 
     public static class GraphQLMiddlewareExtension
