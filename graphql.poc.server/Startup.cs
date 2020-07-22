@@ -44,13 +44,16 @@ namespace graphql.poc.server
             services.AddScoped<IPlayerRepository, PlayerRepository>();
             services.AddScoped<IPlayerService, PlayerService>();
 
-            var assemblyname = typeof(NbaContext).GetTypeInfo().Assembly.GetName().Name;
-            services.AddDbContext<NbaContext>(options =>
-            {
-                options.UseSqlServer(
-                Configuration.GetConnectionString("nbadatabase"),
-                sqlServer => sqlServer.MigrationsAssembly(assemblyname));
-            });
+            //var assemblyname = typeof(NbaContext).GetTypeInfo().Assembly.GetName().Name;
+            //services.AddDbContext<NbaContext>(options =>
+            //{
+            //    options.UseSqlServer(
+            //    Configuration.GetConnectionString("nbadatabase"),
+            //    sqlServer => sqlServer.MigrationsAssembly(assemblyname));
+            //});
+
+            //Usar InMemoryDtabase para no tener que instalar sql server para ejecutar la aplicación
+            services.AddDbContext<NbaContext>(opt => opt.UseInMemoryDatabase("nba.db"));
 
             services.AddScoped<IDependencyResolver>(servicesProvider =>
             {
@@ -80,7 +83,7 @@ namespace graphql.poc.server
                 app.UseHsts();
             }
 
-            app.UseMigrationDatabase<NbaContext>();
+            //app.UseMigrationDatabase<NbaContext>();
             app.UseGraphQLMiddleware<NbaSchema>();
             app.UsePlayground();
 
